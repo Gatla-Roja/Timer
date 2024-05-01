@@ -1,0 +1,69 @@
+//Entry level project
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/* Add your custom CSS styles here if needed */
+#countdown-container {
+  text-align: center;
+  font-family: Times roman;
+  font-size: 60px;
+  color: white;
+align-items: center;
+}
+
+#countdown {
+  display: inline-block;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+ 
+}
+ 
+#days, #hours, #minutes, #seconds {
+  margin: 1px;
+}
+</style>
+</head>
+<body bgcolor="black">
+
+<!-- Custom countdown timer -->
+<center><b>
+  <div id="countdown-container">                                     
+    <div id="countdown">
+      <span id="days">0days</span> :
+      <span id="hours">0hours</span> :
+      <span id="minutes">0minutes</span> :
+      <span id="seconds">0seconds</span>
+    </div>
+  </div>
+</center>
+</b>
+
+<script>
+// Set the date we're counting down to (modify as needed)
+var countDownDate = new Date("May 3, 2024 23:59:59").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("days").innerHTML = days + "days";
+  document.getElementById("hours").innerHTML = hours + "hours";
+  document.getElementById("minutes").innerHTML = minutes + "minutes";
+  document.getElementById("seconds").innerHTML = seconds + "seconds";
+
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("countdown").innerHTML = "EVENT EXPIRED";
+  }
+}, 1000);
+</script>
+</body>
+</html>
